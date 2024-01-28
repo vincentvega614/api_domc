@@ -1,4 +1,6 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
+
+from django_filters.rest_framework import DjangoFilterBackend
 
 from domc.models import (ApartmentBuilding, ManagementCompany,
                          ManagementCompanySite)
@@ -10,6 +12,12 @@ from .serializers import (ApartmentBuildingSerializer,
 class ApartmentBuildingViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ApartmentBuilding.objects.all()
     serializer_class = ApartmentBuildingSerializer
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+    filterset_fields = ('building_adress',)
+    search_fields = ('building_adress',
+                     'management_company__management_company',
+                     'management_company_site__management_company_site'
+    )
 
 
 class ManagementCompanyViewSet(viewsets.ReadOnlyModelViewSet):

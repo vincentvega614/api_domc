@@ -7,6 +7,7 @@ User = get_user_model()
 class ManagementCompany(models.Model):
     management_company = models.CharField(
         max_length=100,
+        unique=True,
         verbose_name='Наименование управляющей компании'
     )
     adress_management_company = models.CharField(
@@ -29,6 +30,7 @@ class ManagementCompany(models.Model):
 class ManagementCompanySite(models.Model):
     management_company_site = models.CharField(
         max_length=50,
+        unique=True,
         verbose_name='Наименование участка управляющей компании'
     )
     site_adress = models.CharField(
@@ -60,6 +62,7 @@ class ManagementCompanySite(models.Model):
 class ApartmentBuilding(models.Model):
     building_adress = models.CharField(
         max_length=200,
+        unique=True,
         verbose_name='Адрес МКД'
     )
     management_company = models.ForeignKey(
