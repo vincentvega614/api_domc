@@ -7,16 +7,16 @@ from .serializers import (ApartmentBuildingSerializer,
                           ManagementCompanySiteSerializer)
 
 
-class ApartmentBuildingViewSet(viewsets.ModelViewSet):
+class ApartmentBuildingViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ApartmentBuilding.objects.all()
     serializer_class = ApartmentBuildingSerializer
 
 
-class ManagementCompanyViewSet(viewsets.ModelViewSet):
+class ManagementCompanyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ManagementCompany.objects.all()
     serializer_class = ManagementCompanySerializer
 
 
-class MAnagementCompanySiteViewSet(viewsets.ModelViewSet):
+class MAnagementCompanySiteViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ManagementCompanySite.objects.all()
     serializer_class = ManagementCompanySiteSerializer

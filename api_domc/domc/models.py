@@ -54,7 +54,7 @@ class ManagementCompanySite(models.Model):
         verbose_name_plural = 'Участки управляющей компании'
 
     def __str__(self):
-        return f'{self.management_company_site} - {self.site_adress}'
+        return self.management_company_site
 
 
 class ApartmentBuilding(models.Model):
