@@ -14,10 +14,11 @@ class ApartmentBuildingViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ApartmentBuildingSerializer
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
     filterset_fields = ('building_adress',)
-    search_fields = ('building_adress',
-                     'management_company__management_company',
-                     'management_company_site__management_company_site'
-    )
+    # search_fields = ('building_adress',
+    #                  'management_company__management_company',
+    #                  'management_company_site__management_company_site'
+    # )
+    search_fields = ('building_adress',)
 
 
 class ManagementCompanyViewSet(viewsets.ReadOnlyModelViewSet):
