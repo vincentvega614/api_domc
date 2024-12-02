@@ -7,7 +7,8 @@ from .models import (ApartmentBuilding, ManagementCompany,
 class ApartmentBuildingAdmin(admin.ModelAdmin):
     list_display = (
         'pk', 'building_adress', 'management_company',
-        'management_company_site', 'navigation_link_to_the_building'
+        'management_company_site', 'navigation_link_to_the_building', 'note',
+        'in_contract'
     )
     search_fields = ('building_adress',)
     list_filter = ('building_adress',)
@@ -16,7 +17,7 @@ class ApartmentBuildingAdmin(admin.ModelAdmin):
 
 class ManagementCompanyAdmin(admin.ModelAdmin):
     list_display = (
-        'pk', 'management_company', 'adress_management_company',
+        'pk', 'management_company', 'adress_management_company', 'contact',
         'navigation_link_to_the_company'
     )
     search_field = ('management_company',)
@@ -26,8 +27,8 @@ class ManagementCompanyAdmin(admin.ModelAdmin):
 
 class ManagementCompantSiteAdmin(admin.ModelAdmin):
     list_display = (
-        'pk', 'management_company_site', 'site_adress', 'note',
-        'management_company'
+        'pk', 'management_company_site', 'site_adress',
+        'management_company', 'navigation_link_to_the_site'
     )
     search_field = ('management_company_site',)
     list_filter = ('management_company_site',)
