@@ -97,8 +97,38 @@ class ApartmentBuilding(models.Model):
     )
     in_contract = models.BooleanField(
         blank=True, null=True,
-        verbose_name='Наличие МКД в договоре с управляющей компанией',
-        help_text='Укажите есть ли МКД в договоре с управляющей компание'
+        verbose_name='Наличие МКД в договоре с УК',
+        help_text='Укажите есть ли МКД в договоре с УК'
+    )
+    pipe_support_aria = models.BooleanField(
+        blank=True, null=True,
+        verbose_name='Наличие стоки(ек) Ария ТВ на МКД',
+        help_text='Укажите есть ли на МКД стойки Ария ТВ'
+    )
+    pipe_support_oyster = models.BooleanField(
+        blank=True, null=True,
+        verbose_name='Наличие стоки(ек) Объединённых сетей на МКД',
+        help_text='Укажите есть ли на МКД стойки Объединённых сетей'
+    )
+    pipe_support_comlink = models.BooleanField(
+        blank=True, null=True,
+        verbose_name='Наличие стоки(ек) Комлинк на МКД',
+        help_text='Укажите есть ли на МКД стойки Комлинк'
+    )
+    wall_mount_aria = models.BooleanField(
+        blank=True, null=True,
+        verbose_name='Наличие стенового крепления Ария ТВ на МКД',
+        help_text='Укажите есть ли на МКД стеновое крепление Ария ТВ'
+    )
+    wall_mount_oyster = models.BooleanField(
+        blank=True, null=True,
+        verbose_name='Наличие стенового крепления Объединённых сетей на МКД',
+        help_text='Укажите есть ли на МКД стеновое крепление Объединённых сетей'
+    )
+    wall_mount_comlink = models.BooleanField(
+        blank=True, null=True,
+        verbose_name='Наличие стенового крепления Комлинк на МКД',
+        help_text='Укажите есть ли на МКД стеновое крепление Комлинк'
     )
 
     class Meta:
