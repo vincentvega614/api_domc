@@ -68,6 +68,21 @@ class ManagementCompanySite(models.Model):
         return self.management_company_site
 
 
+class Note(models.Model):
+    text = models.TextField(
+        blank=True, null=True,
+        verbose_name='Контакты и примечание по доступу',
+        help_text='Введите контаты и примечание по доступу'
+    )
+
+    class Meta:
+        verbose_name = 'Комментарий по доступу на МКД'
+        verbose_name_plural = 'Комментарии по доступу на МКД'
+    
+    def __str__(self):
+        return self.text
+
+
 class ApartmentBuilding(models.Model):
     building_adress = models.CharField(
         max_length=200, unique=True, verbose_name='Адрес МКД',
@@ -90,7 +105,9 @@ class ApartmentBuilding(models.Model):
         verbose_name='Ссылка для построения маршрута к МКД',
         help_text='Укажите ссылку для построения маршрута к МКД'
     )
-    note = models.TextField(
+    note = models.ForeignKey(
+        Note,
+        on_delete=models.CASCADE, related_name='access_contact',
         blank=True, null=True,
         verbose_name='Контакты и примечание по доступу',
         help_text='Введите контаты и примечание по доступу'

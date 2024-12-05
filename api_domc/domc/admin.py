@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (ApartmentBuilding, ManagementCompany,
-                     ManagementCompanySite)
+                     ManagementCompanySite, Note)
 
 
 class ApartmentBuildingAdmin(admin.ModelAdmin):
@@ -37,6 +37,14 @@ class ManagementCompantSiteAdmin(admin.ModelAdmin):
     empty_value_display = '-пусто-'
 
 
+class NoteAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'text')
+    search_fields = ('text',)
+    list_filter = ('text',)
+    empty_value_display = '-пусто-'
+
+
 admin.site.register(ApartmentBuilding, ApartmentBuildingAdmin)
 admin.site.register(ManagementCompany, ManagementCompanyAdmin)
 admin.site.register(ManagementCompanySite, ManagementCompantSiteAdmin)
+admin.site.register(Note, NoteAdmin)
