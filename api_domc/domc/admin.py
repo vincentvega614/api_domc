@@ -7,7 +7,7 @@ from .models import (ApartmentBuilding, ManagementCompany,
 class ApartmentBuildingAdmin(admin.ModelAdmin):
     list_display = (
         'pk', 'building_adress', 'management_company',
-        'management_company_site', 'navigation_link_to_the_building', 'note',
+        'management_company_site', 'navigation_link_to_the_building',
         'in_contract', 'pipe_support_aria', 'pipe_support_oyster',
         'pipe_support_comlink', 'wall_mount_aria', 'wall_mount_oyster',
         'wall_mount_comlink'
@@ -38,7 +38,7 @@ class ManagementCompantSiteAdmin(admin.ModelAdmin):
 
 
 class NoteAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'text')
+    list_display = ('pk', 'apartment_building', 'author', 'text', 'created')
     search_fields = ('text',)
     list_filter = ('text',)
     empty_value_display = '-пусто-'

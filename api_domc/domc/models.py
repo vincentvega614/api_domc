@@ -68,19 +68,19 @@ class ManagementCompanySite(models.Model):
         return self.management_company_site
 
 
-class Note(models.Model):
-    text = models.TextField(
-        blank=True, null=True,
-        verbose_name='Контакты и примечание по доступу',
-        help_text='Введите контаты и примечание по доступу'
-    )
+# class Note(models.Model):
+#     text = models.TextField(
+#         blank=True, null=True,
+#         verbose_name='Контакты и примечание по доступу',
+#         help_text='Введите контаты и примечание по доступу'
+#     )
 
-    class Meta:
-        verbose_name = 'Комментарий по доступу на МКД'
-        verbose_name_plural = 'Комментарии по доступу на МКД'
+#     class Meta:
+#         verbose_name = 'Комментарий по доступу на МКД'
+#         verbose_name_plural = 'Комментарии по доступу на МКД'
     
-    def __str__(self):
-        return self.text
+#     def __str__(self):
+#         return self.text
 
 
 class ApartmentBuilding(models.Model):
@@ -105,13 +105,13 @@ class ApartmentBuilding(models.Model):
         verbose_name='Ссылка для построения маршрута к МКД',
         help_text='Укажите ссылку для построения маршрута к МКД'
     )
-    note = models.ForeignKey(
-        Note,
-        on_delete=models.CASCADE, related_name='access_contact',
-        blank=True, null=True,
-        verbose_name='Контакты и примечание по доступу',
-        help_text='Введите контаты и примечание по доступу'
-    )
+    # note = models.ForeignKey(
+    #     Note,
+    #     on_delete=models.CASCADE, related_name='access_contact',
+    #     blank=True, null=True,
+    #     verbose_name='Контакты и примечание по доступу',
+    #     help_text='Введите контаты и примечание по доступу'
+    # )
     in_contract = models.BooleanField(
         blank=True, null=True,
         verbose_name='Наличие МКД в договоре с УК',
@@ -154,3 +154,29 @@ class ApartmentBuilding(models.Model):
 
     def __str__(self):
         return self.building_adress
+
+
+class Note(models.Model):
+    apartment_building = models.ForeignKey(
+        ApartmentBuilding,
+        on_delete=models.CASCADE, related_name='notes',
+        verbose_name='Адрес МКД', help_text='Выберите адрес МКД'
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE, related_name='notes',
+        verbose_name='Автор заметки', help_text='Укажите автора заметки'
+    )
+    text = models.TextField(
+        verbose_name='Текст заметки', help_text='Введите текст заметки'
+    )
+    created = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    class Meta:
+        verbose_name = 'Заметка'
+        verbose_name_plural = 'Заметки'
+
+    def __str__(self):
+        return self.text
