@@ -16,24 +16,45 @@ class ManagementCompanySiteSerializer(serializers.ModelSerializer):
         )
 
 
+# class ApartmentBuildingSerializer(serializers.ModelSerializer):
+#     management_company = serializers.StringRelatedField(
+#         read_only=True
+#     )
+#     management_company_site = serializers.StringRelatedField(
+#         read_only=True
+#     )
+#     site_adress = serializers.CharField(
+#         source='management_company_site.site_adress'
+#     )
+#     note = serializers.StringRelatedField(read_only=True)
+
+#     class Meta:
+#         model = ApartmentBuilding
+#         fields = (
+#             'id', 'building_adress', 'management_company',
+#             'management_company_site', 'site_adress',
+#             'navigation_link_to_the_building', 'note', 'in_contract',
+#             'pipe_support_aria', 'pipe_support_oyster', 'pipe_support_comlink',
+#             'wall_mount_aria', 'wall_mount_oyster', 'wall_mount_comlink'
+#         )
+
+
+# Сериализатор для записи новых объектов
 class ApartmentBuildingSerializer(serializers.ModelSerializer):
-    management_company = serializers.StringRelatedField(
-        read_only=True
-    )
-    management_company_site = serializers.StringRelatedField(
-        read_only=True
-    )
-    site_adress = serializers.CharField(
-        source='management_company_site.site_adress'
-    )
-    note = serializers.StringRelatedField(read_only=True)
+    # management_company = serializers.StringRelatedField(
+    #     read_only=True
+    # )
+    # management_company_site = serializers.StringRelatedField(
+    #     read_only=True
+    # )
+    # note = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = ApartmentBuilding
         fields = (
             'id', 'building_adress', 'management_company',
-            'management_company_site', 'site_adress',
-            'navigation_link_to_the_building', 'note', 'in_contract',
+            'management_company_site',
+            'navigation_link_to_the_building', 'in_contract',
             'pipe_support_aria', 'pipe_support_oyster', 'pipe_support_comlink',
             'wall_mount_aria', 'wall_mount_oyster', 'wall_mount_comlink'
         )

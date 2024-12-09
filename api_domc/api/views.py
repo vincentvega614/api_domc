@@ -9,7 +9,20 @@ from .serializers import (ApartmentBuildingSerializer,
                           ManagementCompanySiteSerializer)
 
 
-class ApartmentBuildingViewSet(viewsets.ReadOnlyModelViewSet):
+# class ApartmentBuildingViewSet(viewsets.ReadOnlyModelViewSet):
+#     queryset = ApartmentBuilding.objects.all()
+#     serializer_class = ApartmentBuildingSerializer
+#     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+#     filterset_fields = ('building_adress',)
+#     # search_fields = ('building_adress',
+#     #                  'management_company__management_company',
+#     #                  'management_company_site__management_company_site'
+#     # )
+#     search_fields = ('building_adress',)
+
+
+# ViewSet для записи новых объектов
+class ApartmentBuildingViewSet(viewsets.ModelViewSet):
     queryset = ApartmentBuilding.objects.all()
     serializer_class = ApartmentBuildingSerializer
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
