@@ -45,13 +45,21 @@ class ApartmentBuildingSerializer(serializers.ModelSerializer):
     management_company_site_id = serializers.PrimaryKeyRelatedField(
         queryset=ManagementCompanySite.objects.all(), write_only=True
     )
+    site_adress = serializers.CharField(
+        source='management_company_site.site_adress', read_only=True
+    )
+    navigation_link_to_the_site = serializers.CharField(
+        source='management_company_site.navigation_link_to_the_site',
+        read_only=True
+    )
 
     class Meta:
         model = ApartmentBuilding
         fields = (
             'id', 'building_adress', 'management_company',
             'management_company_site', 'management_company_id',
-            'management_company_site_id', 'navigation_link_to_the_building',
+            'management_company_site_id', 'site_adress',
+            'navigation_link_to_the_site', 'navigation_link_to_the_building',
             'in_contract', 'pipe_support_aria', 'pipe_support_oyster',
             'pipe_support_comlink', 'wall_mount_aria', 'wall_mount_oyster',
             'wall_mount_comlink'
@@ -71,15 +79,3 @@ class ApartmentBuildingSerializer(serializers.ModelSerializer):
             'management_company_site_id', None
         )
         return super().create(validated_data)
-
-
-# class ManagementCompanySerializer(serializers.ModelSerializer):
-#     all_site = serializers.StringRelatedField(many=True, read_only=True)
-#     building = serializers.StringRelatedField(many=True, read_only=True)
-
-#     class Meta:
-#         model = ManagementCompany
-#         fields = (
-#             'id', 'management_company', 'adress_management_company', 'contact',
-#             'navigation_link_to_the_company', 'all_site', 'building'
-#         )

@@ -9,7 +9,6 @@ from .serializers import (ApartmentBuildingSerializer,
                           ManagementCompanySiteSerializer)
 
 
-# ViewSet для записи новых объектов
 class ApartmentBuildingViewSet(viewsets.ModelViewSet):
     queryset = ApartmentBuilding.objects.all()
     serializer_class = ApartmentBuildingSerializer
@@ -19,7 +18,7 @@ class ApartmentBuildingViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         data = request.data
-        if isinstance(data, list):  # Проверяем, что это массив
+        if isinstance(data, list):
             serializer = self.get_serializer(data=data, many=True)
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
