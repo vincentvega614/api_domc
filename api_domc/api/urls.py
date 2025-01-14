@@ -1,8 +1,7 @@
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from django.urls import include, path
-
-from .views import (ApartmentBuildingViewSet, MAnagementCompanySiteViewSet,
+from .views import (ApartmentBuildingViewSet, ManagementCompanySiteViewSet,
                     ManagementCompanyViewSet)
 
 app_name = 'api'
@@ -10,7 +9,7 @@ app_name = 'api'
 router = DefaultRouter()
 router.register('apartment-buildings', ApartmentBuildingViewSet)
 router.register('management-companies', ManagementCompanyViewSet)
-router.register('management-company-sites', MAnagementCompanySiteViewSet)
+router.register('management-company-sites', ManagementCompanySiteViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

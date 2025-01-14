@@ -34,7 +34,7 @@ class ApartmentBuildingViewSet(viewsets.ModelViewSet):
         )
 
 
-class ManagementCompanyViewSet(viewsets.ReadOnlyModelViewSet):
+class ManagementCompanyViewSet(viewsets.ModelViewSet):
     queryset = ManagementCompany.objects.all()
     serializer_class = ManagementCompanySerializer
 
@@ -46,7 +46,7 @@ class ManagementCompanyViewSet(viewsets.ReadOnlyModelViewSet):
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         if isinstance(data, dict):
-            serializer = self.get_serializer(data=data, many=True)
+            serializer = self.get_serializer(data=data)
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -56,7 +56,7 @@ class ManagementCompanyViewSet(viewsets.ReadOnlyModelViewSet):
         )
 
 
-class MAnagementCompanySiteViewSet(viewsets.ReadOnlyModelViewSet):
+class ManagementCompanySiteViewSet(viewsets.ModelViewSet):
     queryset = ManagementCompanySite.objects.all()
     serializer_class = ManagementCompanySiteSerializer
 
@@ -68,7 +68,7 @@ class MAnagementCompanySiteViewSet(viewsets.ReadOnlyModelViewSet):
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         if isinstance(data, dict):
-            serializer = self.get_serializer(data=data, many=True)
+            serializer = self.get_serializer(data=data)
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
