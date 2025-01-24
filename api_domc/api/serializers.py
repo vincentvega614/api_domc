@@ -34,9 +34,60 @@ class ManagementCompanySiteSerializer(serializers.ModelSerializer):
         )
 
 
+# class ApartmentBuildingSerializer(serializers.ModelSerializer):
+#     management_company_str = serializers.StringRelatedField(
+#         source='management_company', read_only=True
+#     )
+#     # management_company = serializers.SerializerMethodField()
+#     management_company_site_str = serializers.StringRelatedField(
+#         source='management_company_site', read_only=True
+#     )
+#     # management_company_site = serializers.SerializerMethodField()
+#     # note = serializers.StringRelatedField(read_only=True)
+#     management_company = serializers.PrimaryKeyRelatedField(
+#         queryset=ManagementCompany.objects.all(), write_only=True
+#     )
+#     management_company_site = serializers.PrimaryKeyRelatedField(
+#         queryset=ManagementCompanySite.objects.all(), write_only=True
+#     )
+#     site_adress = serializers.CharField(
+#         source='management_company_site.site_adress', read_only=True
+#     )
+#     navigation_link_to_the_site = serializers.CharField(
+#         source='management_company_site.navigation_link_to_the_site',
+#         read_only=True
+#     )
+
+#     class Meta:
+#         model = ApartmentBuilding
+#         fields = (
+#             'id', 'building_adress', 'management_company_str',
+#             'management_company_site_str', 'management_company',
+#             'management_company_site', 'navigation_link_to_the_building',
+#             'in_contract', 'pipe_support_aria', 'pipe_support_oyster',
+#             'pipe_support_comlink', 'wall_mount_aria', 'wall_mount_oyster',
+#             'wall_mount_comlink', 'site_adress', 'navigation_link_to_the_site'
+#         )
+
+#     # def get_management_company(self, obj):
+#     #     return str(getattr(obj, 'management_company', None))
+
+#     # def get_management_company_site(self, obj):
+#     #     return str(getattr(obj, 'management_company_site', None))
+
+#     # def create(self, validated_data):
+#     #     validated_data['management_company'] = validated_data.pop(
+#     #         'management_company_id', None
+#     #     )
+#     #     validated_data['management_company_site'] = validated_data.pop(
+#     #         'management_company_site_id', None
+#     #     )
+#     #     return super().create(validated_data)
+
+
 class ApartmentBuildingSerializer(serializers.ModelSerializer):
     management_company_str = serializers.StringRelatedField(
-        source='management_company', read_only=True
+        source='management_company_site.management_company', read_only=True
     )
     # management_company = serializers.SerializerMethodField()
     management_company_site_str = serializers.StringRelatedField(

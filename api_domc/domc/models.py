@@ -88,12 +88,12 @@ class ApartmentBuilding(models.Model):
         max_length=200, unique=True, verbose_name='Адрес МКД',
         help_text='Введите адрес МКД'
     )
-    management_company = models.ForeignKey(
-        ManagementCompany,
-        on_delete=models.CASCADE, related_name='buildings',
-        verbose_name='Наименование управляющей компании',
-        help_text='Выберите управляющую компанию'
-    )
+    # management_company = models.ForeignKey(
+    #     ManagementCompany,
+    #     on_delete=models.CASCADE, related_name='buildings',
+    #     verbose_name='Наименование управляющей компании',
+    #     help_text='Выберите управляющую компанию'
+    # )
     management_company_site = models.ForeignKey(
         ManagementCompanySite,
         on_delete=models.CASCADE, related_name='site_buildings',
