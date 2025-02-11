@@ -122,6 +122,11 @@ class ApartmentBuilding(models.Model):
         verbose_name='Наличие стоки(ек) Ария ТВ на МКД',
         help_text='Укажите есть ли на МКД стойки Ария ТВ'
     )
+    pipe_support_build = models.BooleanField(
+        blank=True, null=True,
+        verbose_name='Наличие стоки(ек) по проекту дома',
+        help_text='Укажите есть ли на МКД стойки по проект у дома'
+    )
     pipe_support_oyster = models.BooleanField(
         blank=True, null=True,
         verbose_name='Наличие стоки(ек) Объединённых сетей на МКД',
