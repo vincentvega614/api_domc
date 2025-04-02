@@ -51,16 +51,16 @@ class ManagementCompanySite(models.Model):
         verbose_name='Телефон эксплуатационного участка',
         help_text='Введите телефон эксплуатационного участка'
     )
-    technician = models.TextField(
-        blank=True, null=True, 
-        verbose_name='Техник эксплуатационного участка',
-        help_text='Введите ФИО техника эксплуатационного участка'
-    )
-    technician_phone = models.TextField(
-        blank=True, null=True, 
-        verbose_name='Телефон техника эксплуатационного участка',
-        help_text='Введите номер телефона техника эксплуатационного участка'
-    )
+    # technician = models.TextField(
+    #     blank=True, null=True, 
+    #     verbose_name='Техник эксплуатационного участка',
+    #     help_text='Введите ФИО техника эксплуатационного участка'
+    # )
+    # technician_phone = models.TextField(
+    #     blank=True, null=True, 
+    #     verbose_name='Телефон техника эксплуатационного участка',
+    #     help_text='Введите номер телефона техника эксплуатационного участка'
+    # )
     # note = models.TextField(
     #     verbose_name='Примечание'
     # )
@@ -126,6 +126,16 @@ class ApartmentBuilding(models.Model):
         blank=True, null=True,
         verbose_name='Ссылка для построения маршрута к МКД',
         help_text='Укажите ссылку для построения маршрута к МКД'
+    )
+    technician = models.TextField(
+        blank=True, null=True, 
+        verbose_name='Техник эксплуатационного участка',
+        help_text='Введите ФИО техника эксплуатационного участка'
+    )
+    technician_phone = models.TextField(
+        blank=True, null=True, 
+        verbose_name='Телефон техника эксплуатационного участка',
+        help_text='Введите номер телефона техника эксплуатационного участка'
     )
     # note = models.ForeignKey(
     #     Note,
