@@ -20,6 +20,8 @@ class ManagementCompany(models.Model):
     )
     navigation_link_to_the_company = models.URLField(
         max_length=200,
+        # Временно может быть пустым, пока АП в урезанном виде (только парсинг с сайта ЖКС)
+        blank=True, null=True,
         verbose_name='Ссылка для построения маршрута к управляющей компании',
         help_text='Укажите ссылку для построения маршрута к управляющей компании'
     )
@@ -44,6 +46,21 @@ class ManagementCompanySite(models.Model):
         verbose_name='Адрес участка управляющей компании',
         help_text='Введите адрес участка управляющей компании'
     )
+    office_phone = models.TextField(
+        blank=True, null=True, 
+        verbose_name='Телефон эксплуатационного участка',
+        help_text='Введите телефон эксплуатационного участка'
+    )
+    technician = models.TextField(
+        blank=True, null=True, 
+        verbose_name='Техник эксплуатационного участка',
+        help_text='Введите ФИО техника эксплуатационного участка'
+    )
+    technician_phone = models.TextField(
+        blank=True, null=True, 
+        verbose_name='Телефон техника эксплуатационного участка',
+        help_text='Введите номер телефона техника эксплуатационного участка'
+    )
     # note = models.TextField(
     #     verbose_name='Примечание'
     # )
@@ -56,6 +73,8 @@ class ManagementCompanySite(models.Model):
     )
     navigation_link_to_the_site = models.URLField(
         max_length=200,
+        # Временно может быть пустым, пока АП в урезанном виде (только парсинг с сайта ЖКС)
+        blank=True, null=True,
         verbose_name='Ссылка для построения маршрута к участку',
         help_text='Укажите ссылку для построения маршрута к участку упарвляющей компании'
     )
@@ -88,6 +107,7 @@ class ApartmentBuilding(models.Model):
         max_length=200, unique=True, verbose_name='Адрес МКД',
         help_text='Введите адрес МКД'
     )
+    # Закомментированно так как связь МКД с УК реализована через модель Участка
     # management_company = models.ForeignKey(
     #     ManagementCompany,
     #     on_delete=models.CASCADE, related_name='buildings',
@@ -102,6 +122,8 @@ class ApartmentBuilding(models.Model):
     )
     navigation_link_to_the_building = models.URLField(
         max_length=200,
+        # Временно может быть пустым, пока АП в урезанном виде (только парсинг с сайта ЖКС)
+        blank=True, null=True,
         verbose_name='Ссылка для построения маршрута к МКД',
         help_text='Укажите ссылку для построения маршрута к МКД'
     )
