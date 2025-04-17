@@ -37,6 +37,9 @@ class ApartmentBuildingViewSet(viewsets.ModelViewSet):
 class ManagementCompanyViewSet(viewsets.ModelViewSet):
     queryset = ManagementCompany.objects.all()
     serializer_class = ManagementCompanySerializer
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+    filterset_fields = ('management_company',)
+    search_fields = ('management_company',)
 
     def create(self, request, *args, **kwargs):
         data = request.data
@@ -59,6 +62,9 @@ class ManagementCompanyViewSet(viewsets.ModelViewSet):
 class ManagementCompanySiteViewSet(viewsets.ModelViewSet):
     queryset = ManagementCompanySite.objects.all()
     serializer_class = ManagementCompanySiteSerializer
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+    filterset_fields = ('management_company', 'management_company_site',)
+    search_fields = ('management_company', 'management_company_site',)
 
     def create(self, request, *args, **kwargs):
         data = request.data

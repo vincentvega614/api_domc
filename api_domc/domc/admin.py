@@ -4,23 +4,11 @@ from .models import (ApartmentBuilding, ManagementCompany,
                      ManagementCompanySite, Note)
 
 
-# class ApartmentBuildingAdmin(admin.ModelAdmin):
-#     list_display = (
-#         'pk', 'building_adress', 'management_company',
-#         'management_company_site', 'navigation_link_to_the_building',
-#         'in_contract', 'pipe_support_aria', 'pipe_support_oyster',
-#         'pipe_support_comlink', 'wall_mount_aria', 'wall_mount_oyster',
-#         'wall_mount_comlink'
-#     )
-#     search_fields = ('building_adress',)
-#     list_filter = ('building_adress',)
-#     empty_value_display = '-пусто-'
-
-
 class ApartmentBuildingAdmin(admin.ModelAdmin):
     list_display = (
         'pk', 'building_adress', 'management_company_site',
-        'navigation_link_to_the_building', 'in_contract', 'pipe_support_aria',
+        'navigation_link_to_the_building', 'technician', 'technician_phone',
+        'in_contract', 'pipe_support_aria', 'pipe_support_build',
         'pipe_support_oyster', 'pipe_support_comlink', 'wall_mount_aria',
         'wall_mount_oyster', 'wall_mount_comlink'
     )
@@ -41,7 +29,7 @@ class ManagementCompanyAdmin(admin.ModelAdmin):
 
 class ManagementCompantSiteAdmin(admin.ModelAdmin):
     list_display = (
-        'pk', 'management_company_site', 'site_adress',
+        'pk', 'management_company_site', 'site_adress', 'office_phone',
         'management_company', 'navigation_link_to_the_site'
     )
     search_field = ('management_company_site',)

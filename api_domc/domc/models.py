@@ -47,17 +47,17 @@ class ManagementCompanySite(models.Model):
         help_text='Введите адрес участка управляющей компании'
     )
     office_phone = models.TextField(
-        blank=True, null=True, 
+        blank=True, null=True,
         verbose_name='Телефон эксплуатационного участка',
         help_text='Введите телефон эксплуатационного участка'
     )
     # technician = models.TextField(
-    #     blank=True, null=True, 
+    #     blank=True, null=True,
     #     verbose_name='Техник эксплуатационного участка',
     #     help_text='Введите ФИО техника эксплуатационного участка'
     # )
     # technician_phone = models.TextField(
-    #     blank=True, null=True, 
+    #     blank=True, null=True,
     #     verbose_name='Телефон техника эксплуатационного участка',
     #     help_text='Введите номер телефона техника эксплуатационного участка'
     # )
@@ -128,12 +128,12 @@ class ApartmentBuilding(models.Model):
         help_text='Укажите ссылку для построения маршрута к МКД'
     )
     technician = models.TextField(
-        blank=True, null=True, 
+        blank=True, null=True,
         verbose_name='Техник эксплуатационного участка',
         help_text='Введите ФИО техника эксплуатационного участка'
     )
     technician_phone = models.TextField(
-        blank=True, null=True, 
+        blank=True, null=True,
         verbose_name='Телефон техника эксплуатационного участка',
         help_text='Введите номер телефона техника эксплуатационного участка'
     )
