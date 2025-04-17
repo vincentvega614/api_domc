@@ -64,7 +64,7 @@ class ManagementCompanySiteViewSet(viewsets.ModelViewSet):
     serializer_class = ManagementCompanySiteSerializer
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
     filterset_fields = ('management_company', 'management_company_site',)
-    search_fields = ('management_company', 'management_company_site',)
+    search_fields = ('management_company_site__management_company', 'management_company_site',)
 
     def create(self, request, *args, **kwargs):
         data = request.data
