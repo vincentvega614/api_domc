@@ -118,12 +118,11 @@ class ApartmentBuildingSerializer(serializers.ModelSerializer):
     class Meta:
         model = ApartmentBuilding
         fields = (
-            'id', 'building_adress', 'management_company_str',
-            'management_company_site_str',
+            'id', 'building_adress', 'navigation_link_to_the_building',
+            'management_company_str', 'management_company_site_str',
             # Закомментированно так как связь МКД с УК реализована через модель Участка
             # 'management_company',
-            'management_company_site', 'navigation_link_to_the_building',
-            'technician', 'technician_phone', 'office_phone',
+            'office_phone', 'technician', 'technician_phone',
             'in_contract', 'pipe_support_aria', 'pipe_support_oyster',
             'pipe_support_comlink', 'wall_mount_aria', 'wall_mount_oyster',
             'wall_mount_comlink', 'site_adress', 'navigation_link_to_the_site'
