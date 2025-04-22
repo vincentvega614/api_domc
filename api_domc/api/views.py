@@ -1,5 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, status, viewsets
+from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from domc.models import (ApartmentBuilding, ManagementCompany,
@@ -33,6 +34,21 @@ class ApartmentBuildingViewSet(viewsets.ModelViewSet):
             status=status.HTTP_400_BAD_REQUEST
         )
 
+    @action(detail=False, methods=['patch'])
+    def bulk_partial_update(self, request):
+        data = request.data
+        if not isinstance(data, list):
+            return Response({"error": "Expected a list"}, status=400)
+        updated_objects = []
+        for item in data:
+            instance = ManagementCompanySite.objects.get(pk=item['id'])
+            serializer = self.get_serializer(instance, data=item, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            updated_objects.append(serializer.data)
+
+        return Response(updated_objects, status=200)
+
 
 class ManagementCompanyViewSet(viewsets.ModelViewSet):
     queryset = ManagementCompany.objects.all()
@@ -58,6 +74,21 @@ class ManagementCompanyViewSet(viewsets.ModelViewSet):
             status=status.HTTP_400_BAD_REQUEST
         )
 
+    @action(detail=False, methods=['patch'])
+    def bulk_partial_update(self, request):
+        data = request.data
+        if not isinstance(data, list):
+            return Response({"error": "Expected a list"}, status=400)
+        updated_objects = []
+        for item in data:
+            instance = ManagementCompanySite.objects.get(pk=item['id'])
+            serializer = self.get_serializer(instance, data=item, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            updated_objects.append(serializer.data)
+
+        return Response(updated_objects, status=200)
+
 
 class ManagementCompanySiteViewSet(viewsets.ModelViewSet):
     queryset = ManagementCompanySite.objects.all()
@@ -82,3 +113,18 @@ class ManagementCompanySiteViewSet(viewsets.ModelViewSet):
             {"error": "Data should be a list"},
             status=status.HTTP_400_BAD_REQUEST
         )
+
+    @action(detail=False, methods=['patch'])
+    def bulk_partial_update(self, request):
+        data = request.data
+        if not isinstance(data, list):
+            return Response({"error": "Expected a list"}, status=400)
+        updated_objects = []
+        for item in data:
+            instance = ManagementCompanySite.objects.get(pk=item['id'])
+            serializer = self.get_serializer(instance, data=item, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            updated_objects.append(serializer.data)
+
+        return Response(updated_objects, status=200)
