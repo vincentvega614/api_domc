@@ -15,7 +15,7 @@ class ApartmentBuildingViewSet(viewsets.ModelViewSet):
     serializer_class = ApartmentBuildingSerializer
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
     filterset_fields = ('building_adress', 'technician',)
-    search_fields = ('building_adress',)
+    search_fields = ('building_adress',  'technician',)
 
     def create(self, request, *args, **kwargs):
         data = request.data
