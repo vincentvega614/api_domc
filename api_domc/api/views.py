@@ -41,7 +41,7 @@ class ApartmentBuildingViewSet(viewsets.ModelViewSet):
             return Response({"error": "Expected a list"}, status=400)
         updated_objects = []
         for item in data:
-            instance = ManagementCompanySite.objects.get(pk=item['id'])
+            instance = ApartmentBuilding.objects.get(pk=item['id'])
             serializer = self.get_serializer(instance, data=item, partial=True)
             serializer.is_valid(raise_exception=True)
             serializer.save()
@@ -81,7 +81,7 @@ class ManagementCompanyViewSet(viewsets.ModelViewSet):
             return Response({"error": "Expected a list"}, status=400)
         updated_objects = []
         for item in data:
-            instance = ManagementCompanySite.objects.get(pk=item['id'])
+            instance = ManagementCompany.objects.get(pk=item['id'])
             serializer = self.get_serializer(instance, data=item, partial=True)
             serializer.is_valid(raise_exception=True)
             serializer.save()
